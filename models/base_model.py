@@ -2,6 +2,7 @@
 """The BaseModel defines all common attributes/methods for other classes."""
 import uuid
 from datetime import datetime
+import models
 
 class BaseModel:
     """Base class for models with basic methods."""
@@ -16,15 +17,19 @@ class BaseModel:
                     setattr(self, key, datetime.strptime(value, time_format))
                 else:
                     setattr(self, key, value)
+
         else:
             """Initialize instance with ids, timestamps, and optional attributes."""
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = datetime.utcnow()
 
+        models.storage.new(self)
+
     def save(self):
         """Update 'updated_at' timestamp and save the instance"""
         self.updated_at = datetime.utcnow()
+        models.storage.save()
     
     def to_dict(self):
         """Convert attributes to a dictionary with class info and timestamps"""
