@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""The BaseModel defines all common attributes/methods for other classes."""
+'''The BaseModel defines all common attributes/methods for other classes.'''
 import uuid
 from datetime import datetime
 import models
 
 class BaseModel:
-    """Base class for models with basic methods."""
+    '''Base class for models with basic methods.'''
 
     def __init__(self, *args, **kwargs):
         time_format = '%Y-%m-%dT%H:%M:%S.%f'
-        """Initialize instance with ids, timestamps, and optional attributes."""
+
+        '''Initialize instance with ids, timestamps, and optional attributes.'''
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
@@ -26,12 +27,12 @@ class BaseModel:
         models.storage.new(self)
 
     def save(self):
-        """Update 'updated_at' timestamp and save the instance"""
+        '''Update 'updated_at' timestamp and save the instance'''
         self.updated_at = datetime.utcnow()
         models.storage.save()
     
     def to_dict(self):
-        """Convert attributes to a dictionary with class info and timestamps"""
+        '''Convert attributes to a dictionary with class info and timestamps'''
         inst_dict = self.__dict__.copy()
         inst_dict["__class__"] = self.__class__.__name__
         inst_dict["created_at"] = self.created_at.isoformat()
@@ -40,7 +41,7 @@ class BaseModel:
         return inst_dict
 
     def __str__(self):
-        """Return a string representation: '[ClassName] (id) attributes"""
+        '''returns a string representation: '[ClassName] (id) attributes'''
         class_name = self.__class__.__name__
         return "[{}] ({}) {}".format(class_name, self.id,self.__dict__)
 

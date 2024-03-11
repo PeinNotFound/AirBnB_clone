@@ -1,11 +1,11 @@
 #!/usr/bin/python
-"""
-Module for console
-"""
+''''
+Module for the console
+'''
 import cmd
+import ast
 import re
 import shlex
-import ast
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -17,9 +17,7 @@ from models.city import City
 
 
 def split_curly_braces(e_arg):
-    """
-    Splits the curly braces for the update method
-    """
+    '''Splits the curly braces for the update method'''
     curly_braces = re.search(r"\{(.*?)\}", e_arg)
 
     if curly_braces:
@@ -52,36 +50,26 @@ def split_curly_braces(e_arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    '''
-    HBNBCommand console class
-    '''
+    '''HBNBCommand console class'''
     prompt = "(hbnb) "
     valid_classes = ["BaseModel", "User", "Amenity",
                      "Place", "Review", "State", "City"]
 
     def emptyline(self):
-        """
-        Do nothing when empty line is entered.
-        """
+        '''Do nothing when an empty line is entered.'''
         pass
 
     def do_EOF(self, arg):
-        """
-        EOF (Ctrl+D) signal to exit the program.
-        """
+        '''EOF (Ctrl+D) signal to exit the program.'''
         return True
 
     def do_quit(self, arg):
-        """
-        Quit command to exit the program.
-        """
+        '''Quit command to exit the program.'''
         return True
 
     def do_create(self, arg):
-        '''
-        Create a new instance of BaseModel and save it to the JSON file.
-        Usage: create <class_name>
-        '''
+        '''Creates a new instance of BaseModel and save it to JSON file.
+        Usage: it creates <class_name>'''
         commands = shlex.split(arg)
 
         if len(commands) == 0:
@@ -94,18 +82,16 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, arg):
-        '''
-        Show the string representation of an instance.
-        Usage: show <class_name> <id>
-        '''
+        '''Shows the string representation of an instance.
+        Usage: show <class_name> <id>'''
         commands = shlex.split(arg)
 
         if len(commands) == 0:
             print("** class name is missing **")
         elif commands[0] not in self.valid_classes:
-            print("** class doesn't exist **")
+            print("** class does not exist **")
         elif len(commands) < 2:
-            print("** instance id is missing **")
+            print("** instance id missing **")
         else:
             objects = storage.all()
 
@@ -116,18 +102,16 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance has found **")
 
     def do_destroy(self, arg):
-        '''
-        Delete an instance based on the class name and id.
-        Usage: destroy <class_name> <id>
-        '''
+        '''Delete an instance based on the class name and id.
+        Usage: destroy <class_name> <id>'''
         commands = shlex.split(arg)
 
         if len(commands) == 0:
-            print("** class name is missing **")
+            print("** class name missing **")
         elif commands[0] not in self.valid_classes:
-            print("** class does not exist **")
+            print("** class doesn't exist **")
         elif len(commands) < 2:
-            print("** instance id is missing **")
+            print("** instance id missing **")
         else:
             objects = storage.all()
             key = "{}.{}".format(commands[0], commands[1])
@@ -135,14 +119,12 @@ class HBNBCommand(cmd.Cmd):
                 del objects[key]
                 storage.save()
             else:
-                print("** no instance has found **")
+                print("** no instance found **")
 
     def do_all(self, arg):
-        '''
-        Print the string representation of all instances or a specific class.
+        '''Print the string representation of all instances or a specific class.
         Usage: <User>.all()
-                <User>.show()
-        '''
+                <User>.show()'''
         objects = storage.all()
 
         commands = shlex.split(arg)
@@ -158,10 +140,8 @@ class HBNBCommand(cmd.Cmd):
                     print(str(value))
 
     def do_count(self, arg):
-        '''
-        Counts and retrieves the number of instances of a class
-        usage: <class name>.count()
-        '''
+        '''Counts and retrieves the number of instances of a class
+        usage: <class name>.count()'''
         objects = storage.all()
 
         commands = shlex.split(arg)
@@ -183,10 +163,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name is missing **")
 
     def do_update(self, arg):
-        """
-        Update an instance by adding or updating an attribute.
-        Usage: update <class_name> <id> <attribute_name> "<attribute_value>"
-        """
+        '''Updates an instance by adding or updating an attribute.
+        Usage: update <class_name> <id> <attribute_name> "<attribute_value>"'''
         commands = shlex.split(arg)
 
         if len(commands) == 0:
@@ -245,9 +223,7 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
 
     def default(self, arg):
-        """
-        Default behavior for cmd module when input is invalid
-        """
+        '''the default behavior for cmd module when input is invalid'''
         arg_list = arg.split('.')
 
         cls_nm = arg_list[0]  # incoming class name
