@@ -3,11 +3,11 @@
 Module for State unittest
 """
 import os
-import models
+import AirBnB_clone.models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.state import State
+from AirBnB_clone.models.state import State
 
 
 class TestState_instantiation(unittest.TestCase):

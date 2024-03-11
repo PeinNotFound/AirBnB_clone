@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-"""
-Module for FilStorage unittest
-"""
+'''Module for FilStorage unittest'''
+
 import os
 import json
-import models
+import AirBnB_clone.models
 import unittest
-from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-from models.user import User
-from models.state import State
-from models.place import Place
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
+from AirBnB_clone.models.base_model import BaseModel
+from AirBnB_clone.models.engine.file_storage import FileStorage
+from AirBnB_clone.models.user import User
+from AirBnB_clone.models.state import State
+from AirBnB_clone.models.place import Place
+from AirBnB_clone.models.city import City
+from AirBnB_clone.models.amenity import Amenity
+from AirBnB_clone.models.review import Review
 
 
 class TestFileStorage_instantiation(unittest.TestCase):
@@ -35,7 +34,7 @@ class TestFileStorage_instantiation(unittest.TestCase):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
     def test_storage_initializes(self):
-        self.assertEqual(type(models.storage), FileStorage)
+        self.assertEqual(type(AirBnB_clone.models.storage), FileStorage)
 
 
 class TestFileStorage_methods(unittest.TestCase):
@@ -61,11 +60,11 @@ class TestFileStorage_methods(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
 
     def test_all(self):
-        self.assertEqual(dict, type(models.storage.all()))
+        self.assertEqual(dict, type(AirBnB_clone.models.storage.all()))
 
     def test_all_with_arg(self):
         with self.assertRaises(TypeError):
-            models.storage.all(None)
+            AirBnB_clone.models.storage.all(None)
 
     def test_new(self):
         my_base_model = BaseModel()
@@ -75,35 +74,35 @@ class TestFileStorage_methods(unittest.TestCase):
         my_city = City()
         my_amenity = Amenity()
         my_review = Review()
-        models.storage.new(my_base_model)
-        models.storage.new(my_user)
-        models.storage.new(my_state)
-        models.storage.new(my_place)
-        models.storage.new(my_city)
-        models.storage.new(my_amenity)
-        models.storage.new(my_review)
-        self.assertIn("BaseModel." + my_base_model.id, models.storage.all().keys())
-        self.assertIn(my_base_model, models.storage.all().values())
-        self.assertIn("User." + my_user.id, models.storage.all().keys())
-        self.assertIn(my_user, models.storage.all().values())
-        self.assertIn("State." + my_state.id, models.storage.all().keys())
-        self.assertIn(my_state, models.storage.all().values())
-        self.assertIn("Place." + my_place.id, models.storage.all().keys())
-        self.assertIn(my_place, models.storage.all().values())
-        self.assertIn("City." + my_city.id, models.storage.all().keys())
-        self.assertIn(my_city, models.storage.all().values())
-        self.assertIn("Amenity." + my_amenity.id, models.storage.all().keys())
-        self.assertIn(my_amenity, models.storage.all().values())
-        self.assertIn("Review." + my_review.id, models.storage.all().keys())
-        self.assertIn(my_review, models.storage.all().values())
+        AirBnB_clone.models.storage.new(my_base_model)
+        AirBnB_clone.models.storage.new(my_user)
+        AirBnB_clone.models.storage.new(my_state)
+        AirBnB_clone.models.storage.new(my_place)
+        AirBnB_clone.models.storage.new(my_city)
+        AirBnB_clone.models.storage.new(my_amenity)
+        AirBnB_clone.models.storage.new(my_review)
+        self.assertIn("BaseModel." + my_base_model.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_base_model, AirBnB_clone.models.storage.all().values())
+        self.assertIn("User." + my_user.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_user, AirBnB_clone.models.storage.all().values())
+        self.assertIn("State." + my_state.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_state, AirBnB_clone.models.storage.all().values())
+        self.assertIn("Place." + my_place.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_place, AirBnB_clone.models.storage.all().values())
+        self.assertIn("City." + my_city.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_city, AirBnB_clone.models.storage.all().values())
+        self.assertIn("Amenity." + my_amenity.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_amenity, AirBnB_clone.models.storage.all().values())
+        self.assertIn("Review." + my_review.id, AirBnB_clone.models.storage.all().keys())
+        self.assertIn(my_review, AirBnB_clone.models.storage.all().values())
 
     def test_new_with_args(self):
         with self.assertRaises(TypeError):
-            models.storage.new(BaseModel(), 1)
+            AirBnB_clone.models.storage.new(BaseModel(), 1)
 
     def test_new_with_None(self):
         with self.assertRaises(AttributeError):
-            models.storage.new(None)
+            AirBnB_clone.models.storage.new(None)
 
     def test_save(self):
         my_base_model = BaseModel()
@@ -113,14 +112,14 @@ class TestFileStorage_methods(unittest.TestCase):
         my_city = City()
         my_amenity = Amenity()
         my_review = Review()
-        models.storage.new(my_base_model)
-        models.storage.new(my_user)
-        models.storage.new(my_state)
-        models.storage.new(my_place)
-        models.storage.new(my_city)
-        models.storage.new(my_amenity)
-        models.storage.new(my_review)
-        models.storage.save()
+        AirBnB_clone.models.storage.new(my_base_model)
+        AirBnB_clone.models.storage.new(my_user)
+        AirBnB_clone.models.storage.new(my_state)
+        AirBnB_clone.models.storage.new(my_place)
+        AirBnB_clone.models.storage.new(my_city)
+        AirBnB_clone.models.storage.new(my_amenity)
+        AirBnB_clone.models.storage.new(my_review)
+        AirBnB_clone.models.storage.save()
         save_text = ""
         with open("file.json", "r") as f:
             save_text = f.read()
@@ -134,7 +133,7 @@ class TestFileStorage_methods(unittest.TestCase):
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
-            models.storage.save(None)
+            AirBnB_clone.models.storage.save(None)
 
     def test_reload(self):
         my_base_model = BaseModel()
@@ -144,15 +143,15 @@ class TestFileStorage_methods(unittest.TestCase):
         my_city = City()
         my_amenity = Amenity()
         my_review = Review()
-        models.storage.new(my_base_model)
-        models.storage.new(my_user)
-        models.storage.new(my_state)
-        models.storage.new(my_place)
-        models.storage.new(my_city)
-        models.storage.new(my_amenity)
-        models.storage.new(my_review)
-        models.storage.save()
-        models.storage.reload()
+        AirBnB_clone.models.storage.new(my_base_model)
+        AirBnB_clone.models.storage.new(my_user)
+        AirBnB_clone.models.storage.new(my_state)
+        AirBnB_clone.models.storage.new(my_place)
+        AirBnB_clone.models.storage.new(my_city)
+        AirBnB_clone.models.storage.new(my_amenity)
+        AirBnB_clone.models.storage.new(my_review)
+        AirBnB_clone.models.storage.save()
+        AirBnB_clone.models.storage.reload()
         objs = FileStorage._FileStorage__objects
         self.assertIn("BaseModel." + my_base_model.id, objs)
         self.assertIn("User." + my_user.id, objs)
@@ -164,7 +163,7 @@ class TestFileStorage_methods(unittest.TestCase):
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
-            models.storage.reload(None)
+            AirBnB_clone.models.storage.reload(None)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ import cmd
 import ast
 import re
 import shlex
-from models import storage
+from AirBnB_clone.models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity

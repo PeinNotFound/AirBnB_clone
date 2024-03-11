@@ -2,7 +2,7 @@
 '''The BaseModel defines all common attributes/methods for other classes.'''
 import uuid
 from datetime import datetime
-import models
+import AirBnB_clone.models
 
 class BaseModel:
     '''Base class for models with basic methods.'''

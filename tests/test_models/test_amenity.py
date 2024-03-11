@@ -3,11 +3,11 @@
 '''Module for Amenity class unittest'''
 
 import os
-import models
+import AirBnB_clone.models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.amenity import Amenity
+from AirBnB_clone.models.amenity import Amenity
 
 
 class TestAmenity_instantiation(unittest.TestCase):

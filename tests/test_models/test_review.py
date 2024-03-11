@@ -3,11 +3,11 @@
 Module for testing Review
 """
 import os
-import models
+import AirBnB_clone.models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.review import Review
+from AirBnB_clone.models.review import Review
 
 
 class TestReview_instantiation(unittest.TestCase):

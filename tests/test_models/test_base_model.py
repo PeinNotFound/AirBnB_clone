@@ -4,7 +4,7 @@ Module for BaseModel unittest
 """
 import os
 import unittest
-from models.base_model import BaseModel
+from AirBnB_clone.models.base_model import BaseModel
 
 
 

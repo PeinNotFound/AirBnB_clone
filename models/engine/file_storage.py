@@ -1,6 +1,6 @@
 import json
 import os
-from models.base_model import BaseModel
+from AirBnB_clone.models.base_model import BaseModel
 
 
 class FileStorage:

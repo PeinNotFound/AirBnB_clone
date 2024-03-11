@@ -3,11 +3,11 @@
 Module for City unittest
 '''
 import os
-import models
+import AirBnB_clone.models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.city import City
+from AirBnB_clone.models.city import City
 
 
 class TestCity_instantiation(unittest.TestCase):

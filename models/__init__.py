@@ -2,7 +2,7 @@
 
 '''it creates a unique file storage inst for the app'''
 
-from .engine.file_storage import FileStorage
+from AirBnB_clone.models.engine.file_storage import FileStorage
 
 storage = FileStorage()
 

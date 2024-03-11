@@ -2,11 +2,11 @@
 '''Module for Place class unittest'''
 
 import os
-import models
+import AirBnB_clone.models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.place import Place
+from AirBnB_clone.models.place import Place
 
 
 class TestPlace_instantiation(unittest.TestCase):
