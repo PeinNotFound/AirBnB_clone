@@ -25,18 +25,19 @@ section.filters button:hover {
     cursor: pointer;
 }
 
-.locations{
+.locations {
     height: 100%;
     width: 25%;
-    border-right: #DDDDDD solid 1px;
+    border-right: 1px solid #DDDDDD;
     justify-content: center;
     display: flex;
     flex-direction: column;
     margin-right: 200px;
     float: left;
+    position: relative;
 }
 
-.amenities{
+.amenities {
     height: 100%;
     width: 25%;
     margin-right: 50px;
@@ -44,24 +45,41 @@ section.filters button:hover {
     flex-direction: column;
     justify-content: center;
     float: left;
-
+    position: relative; 
 }
 
-h3{
+h3 {
     margin: 0;
     padding: 0;
     font-weight: 600;
 }
 
-h4{
+h4 {
     font-weight: 400;
     font-size: 14px;
 }
 
-
-.popover{
+.popover {
     position: absolute;
+    top: calc(100% + 5px); 
+    left: 0;
+    display: none;
     background-color: #FAFAFA;
-    border: #DDDDDD solid 1px;
+    border: 1px solid #DDDDDD;
     border-radius: 4px;
+    width: 200px; 
+    padding: 20px;
+}
+
+.locations:hover .popover,
+.amenities:hover .popover {
+    display: block;
+}
+
+.popover li {
+    list-style-type: none;
+}
+
+h2 {
+    font-size: 16px;
 }
