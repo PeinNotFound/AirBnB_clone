@@ -57,3 +57,11 @@ h4{
     font-weight: 400;
     font-size: 14px;
 }
+
+
+.popover{
+    position: absolute;
+    background-color: #FAFAFA;
+    border: #DDDDDD solid 1px;
+    border-radius: 4px;
+}
